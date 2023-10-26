@@ -1,0 +1,254 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    --color-black: #121214;
+    --color-write: #FFF;
+    --color-green-500: #065E7C;
+    --color-green-100: #F4FCFF;
+}
+
+html, body, input {
+    font-family: 'Mulish', sans-serif;
+    color: var(--color-black);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; /* 1.6rem */
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: all 300ms ease-out;
+}
+
+img:hover {
+    filter: hue-rotate(7deg) contrast(101%) saturate(200%);
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%; /* 2.4rem */
+}
+
+#app {
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    height: 100vh;
+    background: var(--color-green-100);
+}
+
+.container {
+    padding: 1rem 1rem;
+    width: min(70rem, 100%);
+    margin: 0 auto;
+    min-width: 420px;
+}
+
+header {
+    background: var(--color-green-500);
+    --startY: -100%;
+    animation: move .2s;
+}
+
+header, nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+header img {
+    width: 1.5rem;
+    height: 1.3rem;
+}
+
+header .logo {
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: .5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--color-write);
+    opacity: .85;
+}
+
+header form {
+    flex: 1;
+}
+
+.input-wrapper label {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: .5rem;
+    border: 0;
+    border-radius: .5rem;
+    font-size: 1rem;
+    opacity: .3;
+}
+
+.input-wrapper input::placeholder {
+    opacity: 1;
+}
+
+.avatar {
+    width: 2.625rem;
+    height: 2.625rem;
+    object-fit: cover;
+    border-radius: 50%;
+    background: url(https://randomuser.me/api/portraits/men/5.jpg), lightgray 0px -3.5px / 100% 150% no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+main {
+    overflow-y: scroll;
+}
+
+article img {
+    margin-bottom: 2rem;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.likes {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-like {
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: .5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--color-green-500);
+    cursor: pointer;
+}
+
+.btn-like:hover {
+    opacity: .5;
+}
+
+aside ul {
+    padding-top: 2rem;
+}
+
+aside ul li {
+    display: flex;
+    --delay: .4s;
+    animation: appear .4s var(--delay) backwards;
+}
+
+aside ul li img {
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1rem 1rem 0 0;
+}
+
+aside ul li section {
+    padding-top: 1rem;
+}
+
+footer {
+    background: var(--color-green-500);
+    padding: 1rem;
+    text-align: center;
+
+    --startY: 100%;
+    animation: move .2s;
+}
+
+footer span {
+    color: var(--color-write);
+    font-weight: 600;
+}
+
+/* media queries */
+@media (min-width: 40em) {
+    body {
+        font-size: .8rem;
+    }
+
+    main section {
+        width: min(70rem, 100%);
+        margin: 0 auto;
+        display: flex;
+        padding: 2rem 2rem;
+    }
+
+    article img {
+        border-radius: 1.8rem;
+    }
+
+    aside img {
+        width: 60%;
+    } 
+
+    .articles {
+        padding-left: 1rem;
+    }
+
+    #app > main > section > aside {
+        padding: 0;
+    }
+
+    .articles ul {
+        padding: 0;
+    }
+
+    .articles section {
+        display: block;
+        padding: 1rem 0.1rem;
+    }
+}
+
+/* animations */
+@keyframes move {
+    from {
+        transform: translateY(var(--startY));
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
